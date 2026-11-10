@@ -1,0 +1,12 @@
+# Configuração do Render (Blueprint): New > Blueprint > escolher este repositório.
+# Plano gratuito: dorme após 15 min sem acesso e apaga os dados ao reiniciar.
+services:
+  - type: web
+    name: biotracex-demo
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /api/health
+    envVars:
+      - key: NCBI_EMAIL
+        value: manguebytes@gmail.com

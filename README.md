@@ -22,6 +22,14 @@ Depois abra `http://127.0.0.1:7860`.
 
 `NCBI_EMAIL` é enviado ao NCBI para identificar as consultas, como o NCBI exige.
 
+## Publicando no Render (gratuito)
+
+1. Entre em render.com com a conta do GitHub.
+2. Clique em **New > Blueprint** e escolha este repositório. O Render lê o `render.yaml`.
+3. Confirme. O primeiro build leva alguns minutos; depois o site fica em `https://biotracex-demo.onrender.com` (ou nome parecido).
+
+No plano gratuito, o serviço dorme após 15 minutos sem acesso e apaga contas e análises ao reiniciar. Durante uma análise, mantenha a página aberta.
+
 ## Estrutura
 
 - `frontend/`: interface em React + Vite.
