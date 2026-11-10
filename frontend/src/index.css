@@ -1,0 +1,48 @@
+/* Neulis Sans (fonte do Figma): coloque os .woff2 em public/fonts para usá-la.
+   Sem os arquivos, cai para Outfit (Google Fonts), que tem proporções parecidas. */
+@font-face { font-family: 'Neulis Sans'; src: local('Neulis Sans'), url('/fonts/NeulisSans-Regular.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'Neulis Sans'; src: local('Neulis Sans Medium'), url('/fonts/NeulisSans-Medium.woff2') format('woff2'); font-weight: 500; font-display: swap; }
+@font-face { font-family: 'Neulis Sans'; src: local('Neulis Sans SemiBold'), url('/fonts/NeulisSans-SemiBold.woff2') format('woff2'); font-weight: 600; font-display: swap; }
+@font-face { font-family: 'Neulis Sans'; src: local('Neulis Sans ExtraBold'), url('/fonts/NeulisSans-ExtraBold.woff2') format('woff2'); font-weight: 800; font-display: swap; }
+
+:root {
+  --bg: #1c1c1c;
+  --surface: #161616;
+  --field: #1b2027;
+  --chip: #262c34;
+  --line: #2a313b;
+  --border-accent: rgba(0, 179, 211, 0.2);
+  --border-accent-strong: rgba(0, 179, 211, 0.25);
+  --accent: #00b3d3;
+  --accent-alt: #00b6d5;
+  --accent-deep: #008eb9;
+  --text: #e7ecea;
+  --text-strong: #f3f8f6;
+  --text-muted: #96a1a0;
+  --text-faint: #5e6a69;
+  --text-soft: rgba(255, 255, 255, 0.75);
+  --on-accent: #0b1210;
+  --danger: #ff7a7a;
+  --radius: 10px;
+  --radius-card: 15px;
+  --font: 'Neulis Sans', 'Outfit', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  color-scheme: dark;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+button, input {
+  font: inherit;
+}

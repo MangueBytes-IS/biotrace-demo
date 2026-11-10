@@ -1,0 +1,6 @@
+biopython
+python-dotenv
+tqdm
+pandas
+openpyxl
+matplotlib

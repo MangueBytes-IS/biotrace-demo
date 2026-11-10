@@ -1,0 +1,35 @@
+# Produção em uma VM Linux. Uso: cd deploy && docker compose -f docker-compose.prod.yml --env-file .env.prod up -d --build
+services:
+  caddy:
+    image: caddy:2-alpine
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    environment:
+      - DOMAIN=${DOMAIN}
+    depends_on:
+      - backend
+
+  backend:
+    build:
+      context: ..
+      dockerfile: backend/Dockerfile
+    restart: unless-stopped
+    # Sem "ports": só o Caddy fala com a API, pela rede interna do compose
+    environment:
+      - NCBI_EMAIL=${NCBI_EMAIL}
+      - CORS_ORIGINS=${CORS_ORIGINS}
+      - DATA_FILE=/data/data.json
+      - ANALYSES_DIR=/data/analyses
+    volumes:
+      - app_data:/data
+
+volumes:
+  app_data:
+  caddy_data:
+  caddy_config:

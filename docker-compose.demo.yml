@@ -1,0 +1,28 @@
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    ports:
+      # Só IPv4: no Docker Desktop/Windows o publish em IPv6 (::1) trava e o navegador fica "carregando"
+      - "127.0.0.1:5000:5000"
+    environment:
+      - FLASK_ENV=production
+      - NCBI_EMAIL=${NCBI_EMAIL:-demo@example.com}
+    volumes:
+      - ./backend/analyses:/app/analyses
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        # Quem chama a API é o navegador (na sua máquina), não o container: use o IP do host, não "backend"
+        VITE_API_URL: http://127.0.0.1:5000
+    ports:
+      - "127.0.0.1:5173:5173"
+    depends_on:
+      - backend
+
+volumes:
+  analyses:
